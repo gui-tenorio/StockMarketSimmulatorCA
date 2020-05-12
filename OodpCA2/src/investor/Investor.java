@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import company.Company;
+
 
 
 public class Investor {
@@ -69,7 +71,7 @@ public static class InvestorBuilder {
 		private String surname;
 		private int shares;
 		
-		
+		private final ArrayList<Company.CompanyBuilder> companies;
 		
 		
 		Random r = new Random();
@@ -80,7 +82,7 @@ public static class InvestorBuilder {
 		public InvestorBuilder() {
 			this.budget = r.nextInt(maxBudget-minBudget) + minBudget;
 			this.id = idGenerator.getAndIncrement();
-			
+			this.companies = new ArrayList<>();
 		}
 		
 		
@@ -90,7 +92,7 @@ public static class InvestorBuilder {
 			this.surname = surname;
 			this.budget = budget;
 			this.shares = 0;
-			
+			this.companies = new ArrayList<>();
 		}
 		
 		public InvestorBuilder setFirstName(String firstName) {
@@ -117,6 +119,18 @@ public static class InvestorBuilder {
 		public void buyShare(double price) {
 			this.setBudget(build().getBudget() - price);
 			this.shares++;
+		}
+		
+		public void addCompany(Company.CompanyBuilder company) {
+			companies.add(company);
+		}
+		
+		public ArrayList<Company.CompanyBuilder> getCompanies() {
+			return companies;
+		}
+
+		public boolean available(Company.CompanyBuilder company) {
+			return !companies.contains(company);
 		}
 		
 		

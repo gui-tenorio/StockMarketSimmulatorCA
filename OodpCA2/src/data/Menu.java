@@ -6,7 +6,7 @@ public class Menu {
 
 	Scanner selection = new Scanner(System.in);
 
-	public void ReportMenu(SetUpData setData) {
+	public void ReportMenu(SetUpDBData setData) {
 		System.out.println();
 		System.out.println("| REPORT MENU |");
 		System.out.println();
@@ -14,9 +14,9 @@ public class Menu {
 		System.out.println("[2] Lowest capital company");
 		System.out.println("[3] Highest share investor");
 		System.out.println("[4] Lowest share investor");
-		System.out.println("[5] Cancel");
+		System.out.println("[5] Exit");
 		System.out.println();
-		System.out.print("Please make your choice from the options above: ");
+		System.out.print("Please choose one of the options above: ");
 		int option = selection.nextInt();
 
 		try {
@@ -39,7 +39,7 @@ public class Menu {
 
 			default:
 				System.out.println("");
-				System.out.println("No options match your input");
+				System.out.println("Not found");
 				System.out.println("Please, try again");
 				ReportMenu(setData);
 			}
@@ -51,16 +51,16 @@ public class Menu {
 		}
 	}
 
-	public void StartMenu(SetUpData setData) {
+	public void StartMenu(SetUpDBData setData) {
 		System.out.println();
 		System.out.println("| MENU |");
 		System.out.println();
-		System.out.println("[1] Display Investors");
-		System.out.println("[2] Display Companies");
+		System.out.println("[1] Display Investors on the screen");
+		System.out.println("[2] Display Companies on the screen");
 		System.out.println("[3] Start Trading Day");
 		System.out.println("[4] Exit");
 		System.out.println();
-		System.out.print("Please make your choice from the options above: ");
+		System.out.print("Please choose one of the options above: ");
 		int option = selection.nextInt();
 
 		try {
@@ -81,13 +81,13 @@ public class Menu {
 				break;
 			default:
 				System.out.println("");
-				System.out.println("No options match your input");
+				System.out.println("Not found");
 				System.out.println("Please, try again");
 				ReportMenu(setData);
 			}
 
 		} catch (InputMismatchException e) {
-			System.out.println("please, try again");
+			System.out.println("Please, try again");
 			selection.next();
 			ReportMenu(setData);
 		}
