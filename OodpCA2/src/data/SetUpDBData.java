@@ -23,8 +23,7 @@ public class SetUpDBData {
 
 	Random r = new Random();
 	
-	
-	
+
 	// Singleton Pattern
 	MySqlCompany dbCompany = MySqlCompany.getInstance();
 	
@@ -32,13 +31,10 @@ public class SetUpDBData {
 
 	public void getItReady() {
 		
-
 		createData();
 		fillDB();
 	}
 
-
-	
 	public void createData() {
 		
 		for (int i = 0; i < amtOfInvestors; i++) {
@@ -52,24 +48,17 @@ public class SetUpDBData {
 	
 	public void fillDB() {
 			
-		
 		listOfCompany.stream().forEach((Company.CompanyBuilder company) -> {
 			company.setName(sd.companyName[r.nextInt(sd.companyName.length)]);
-			
-			
 
 		});
 		
 		listOfInvestor.stream().forEach((Investor.InvestorBuilder investor) -> {
 			investor.setFirstName(sd.firstName[r.nextInt(sd.firstName.length)]);
 			investor.setSurname(sd.surname[r.nextInt(sd.surname.length)]);
-			
 
 		});
-		
 
-		
 	}
-
 
 }

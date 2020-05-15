@@ -40,9 +40,7 @@ public class MySqlInvestor implements DAOInvestor{
 					int id = rs.getInt(1);
 					String firstName = rs.getString(2);
 					String surname = rs.getString(3);
-					String phone = rs.getString(4);
-					String dob = rs.getString(5);
-					double budget = rs.getDouble(6);
+					double budget = rs.getDouble(4);
 					
 					investor.add(new Investor.InvestorBuilder(id, firstName, surname, budget));
 				}

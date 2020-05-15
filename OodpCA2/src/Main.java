@@ -1,5 +1,5 @@
-import data.Menu;
 import data.SetUpDBData;
+import data.Menu;
 
 public class Main {
 
@@ -8,6 +8,7 @@ public class Main {
 
 		SetUpDBData setData = new SetUpDBData();
         Menu menu = new Menu();
+        setData.getItReady();
         menu.StartMenu(setData);
 	}
 }

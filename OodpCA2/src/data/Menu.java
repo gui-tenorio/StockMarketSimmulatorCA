@@ -1,9 +1,14 @@
 package data;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import data.TradingDay;
+import data.PrintOnScreen;
+
 public class Menu {
 
+	PrintOnScreen printOut = new PrintOnScreen();
 	Scanner selection = new Scanner(System.in);
 
 	public void ReportMenu(SetUpDBData setData) {
@@ -22,15 +27,23 @@ public class Menu {
 		try {
 			switch (option) {
 			case 1:
+				printOut.calculateCapital(setData);
+				printOut.printHighestCapital();
 				ReportMenu(setData);
 				break;
 			case 2:
+				printOut.calculateCapital(setData);
+				printOut.printLowestCapital();
 				ReportMenu(setData);
 				break;
 			case 3:
+				printOut.calculateNumberOfShares(setData);
+				printOut.printHighestSharesInvestor();
 				ReportMenu(setData);
 				break;
 			case 4:
+				printOut.calculateNumberOfShares(setData);
+				printOut.printLowestSharesInvestor();
 				ReportMenu(setData);
 				break;
 			case 5:
@@ -66,13 +79,16 @@ public class Menu {
 		try {
 			switch (option) {
 			case 1:
-
+				printOut.displayInvestors(setData);
 				StartMenu(setData);
 				break;
 			case 2:
+				printOut.displayCompanies(setData);
 				StartMenu(setData);
 				break;
 			case 3:
+				TradingDay td = new TradingDay();
+				td.Trade(setData);
 				ReportMenu(setData);
 				break;
 			case 4:

@@ -36,9 +36,8 @@ public class MySqlCompany implements DAOCompany{
 				while(rs.next()) {
 					int id = rs.getInt(1);
 					String name = rs.getString(2);
-					String sector = rs.getString(3);
-					int shares = rs.getInt(4);
-					double sharePrice = rs.getDouble(5);
+					int shares = rs.getInt(3);
+					double sharePrice = rs.getDouble(4);
 					
 					company.add(new Company.CompanyBuilder(id, name, shares, sharePrice));
 				}
