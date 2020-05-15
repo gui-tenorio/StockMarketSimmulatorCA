@@ -23,7 +23,6 @@ public class TradingDay {
 		while (isOpen) {
 			System.out.println("Trading...");
 
-			
 			int randomCompany = r.nextInt(setData.listOfCompany.size());
 			int randomInvestor = r.nextInt(setData.listOfInvestor.size());
 
