@@ -9,9 +9,9 @@ import java.sql.Statement;
 public class DataSource {
 
 	// Database connection details
-	private String db = "";
-	private String un = "";
-	private String pw = "";
+	private String db = "jdbc:mysql://23.251.159.32/stockmarket";
+	private String un = "root";
+	private String pw = "root";
 
 	// Database objects
 	private Connection conn;

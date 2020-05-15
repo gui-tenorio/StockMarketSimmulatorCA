@@ -1,0 +1,85 @@
+package DataAccessObject;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import data.DataSource;
+import company.Company;
+
+public class MySqlCompany implements DAOCompany{
+
+
+
+	ArrayList<Company.CompanyBuilder> company = new ArrayList<Company.CompanyBuilder>();
+	
+	
+
+	// Singleton pattern
+	static private MySqlCompany instance = new MySqlCompany();
+	
+
+		@Override
+		public ArrayList<Company.CompanyBuilder> getCompanies() {
+			
+			
+
+			String query = "SELECT * FROM Company";
+			
+
+			DataSource db = new DataSource();
+			
+
+			ResultSet rs = db.select(query);
+			
+
+			try {
+				while(rs.next()) {
+					int id = rs.getInt(1);
+					String name = rs.getString(2);
+					String sector = rs.getString(3);
+					int shares = rs.getInt(4);
+					double sharePrice = rs.getDouble(5);
+					
+					company.add(new Company.CompanyBuilder(id, name, shares, sharePrice));
+				}
+				
+				db.closing();
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return company;
+		}
+		
+		
+		@Override
+		public boolean saveCompany(Company.CompanyBuilder company) {
+			
+
+			DataSource db = new DataSource();
+			
+
+			int id = company.build().getId();
+			String name = company.build().getName();
+			int shares = company.build().getShares();
+			double sharePrice = company.build().getSharePrice();
+			
+
+			String query = "INSERT INTO Company (id, name, shares, sharePrice) values ('"+ id + "', '" + name + "', '" + shares + "', '" + sharePrice + "')";
+			
+			// save the data
+			boolean result = db.save(query);
+					
+			// closing database
+			db.closing();
+					
+			return result;
+		}
+		
+
+		public static MySqlCompany getInstance() {
+			return instance;
+		}
+}
