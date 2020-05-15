@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import data.DataSource;
 import company.Company;
 
 public class MySqlCompany implements DAOCompany{
